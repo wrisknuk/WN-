@@ -302,4 +302,21 @@
       }
 
       async function loadRecommendations() {
-        const
+        const l = document.getElementById('recs-list');
+        try {
+          const q = query(collection(db, "posts"), orderBy("createdAt", "desc"), limit(20));
+          const snap = await getDocs(q);
+          if (snap.empty) {
+            l.innerHTML = "Нет постов";
+            return;
+          }
+          let html = "";
+          snap.forEach(d => {
+            const data = d.data();
+            html += `<div class="post-card"><strong>@${data.authorUsername || 'id'}</strong><p>${data.text || ''}</p></div>`;
+          });
+          l.innerHTML = html;
+        } catch (e) {
+          l.innerHTML = "Ошибка загрузки ленты";
+          console.error(e);
+        }
