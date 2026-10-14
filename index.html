@@ -1,6 +1,10 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>WNКонтакт</title><style>
+<title>WNКонтакт</title>
+<style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Roboto,sans-serif}
 body{background-color:#ebedf0;color:#000;min-height:100vh;display:flex;flex-direction:column}
 header{background-color:#5181b8;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 15px;color:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.15)}
@@ -12,51 +16,98 @@ header{background-color:#5181b8;height:48px;display:flex;align-items:center;just
 .vk-input{width:100%;height:36px;padding:0 12px;border:1px solid #d3d9de;border-radius:4px;font-size:14px;background-color:#f5f7fa}
 .vk-btn{width:100%;height:36px;background-color:#5181b8;color:#fff;border:none;border-radius:4px;font-size:14px;font-weight:500;cursor:pointer;margin-top:10px}
 .toggle-link{display:inline-block;margin-top:15px;font-size:13px;color:#2a5885;text-decoration:none;cursor:pointer}
-.hidden{display:none!important}#app-screen{display:none;flex:1;flex-direction:column}
+.hidden{display:none!important}
+#app-screen{display:none;flex:1;flex-direction:column}
 .main-container{flex:1;display:flex;max-width:960px;width:100%;margin:0 auto;padding:15px}
-nav{width:180px;padding-right:15px}.menu-link{display:block;padding:7px 10px;color:#2c3d54;text-decoration:none;font-size:14px;border-radius:4px;margin-bottom:2px}
+nav{width:180px;padding-right:15px}
+.menu-link{display:block;padding:7px 10px;color:#2c3d54;text-decoration:none;font-size:14px;border-radius:4px;margin-bottom:2px}
 .menu-link.active{background-color:#dae1ea;font-weight:500}
 .content-area{flex:1;background:#fff;border:1px solid #e7e8ec;border-radius:4px;padding:20px;min-height:400px}
-.page{display:none}.page.active{display:block}.chat-item,.post-card{border-bottom:1px solid #e7e8ec;padding:12px 0;font-size:14px}
+.page{display:none}
+.page.active{display:block}
+.chat-item,.post-card{border-bottom:1px solid #e7e8ec;padding:12px 0;font-size:14px}
 .error-txt{color:#e64646;font-size:13px;margin-top:10px;min-height:18px}
-</style></head><body><header><div id="header-text">WNКонтакт</div>
-<div id="logout-btn" class="hidden" style="cursor:pointer;font-size:14px">Выйти</div></header>
-<div id="auth-screen"><div class="auth-box"><div class="logo-container">WN</div>
-<div id="login-fields"><div class="input-group"><label>Юзернейм Pik</label>
-<input type="text" id="username" class="vk-input"></div><div class="input-group">
-<label>Пароль</label><input type="password" id="password" class="vk-input"></div>
+</style>
+</head>
+<body>
+<header>
+<div id="header-text">WNКонтакт</div>
+<div id="logout-btn" class="hidden" style="cursor:pointer;font-size:14px">Выйти</div>
+</header>
+<div id="auth-screen">
+<div class="auth-box">
+<div class="logo-container">WN</div>
+<div id="login-fields">
+<div class="input-group">
+<label>Юзернейм Pik</label>
+<input type="text" id="username" class="vk-input">
+</div>
+<div class="input-group">
+<label>Пароль</label>
+<input type="password" id="password" class="vk-input">
+</div>
 <button id="login-btn" class="vk-btn">Войти</button>
-<div class="toggle-link" id="go-to-reg">Зарегистрироваться</div></div>
-<div id="reg-fields" class="hidden"><div class="input-group"><label>Юзернейм</label>
-<input type="text" id="reg-username" class="vk-input"></div><div class="input-group">
-<label>Имя</label><input type="text" id="reg-name" class="vk-input"></div>
-<div class="input-group"><label>Пароль</label><input type="password" id="reg-password" class="vk-input"></div>
+<div class="toggle-link" id="go-to-reg">Впервые в сети? Зарегистрироваться</div>
+</div>
+<div id="reg-fields" class="hidden">
+<div class="input-group">
+<label>Желаемый Юзернейм (латиница)</label>
+<input type="text" id="reg-username" class="vk-input">
+</div>
+<div class="input-group">
+<label>Отображаемое Имя</label>
+<input type="text" id="reg-name" class="vk-input">
+</div>
+<div class="input-group">
+<label>Пароль (от 6 символов)</label>
+<input type="password" id="reg-password" class="vk-input">
+</div>
 <button id="register-btn" class="vk-btn">Создать аккаунт</button>
-<div class="toggle-link" id="go-to-login">Войти</div></div>
-<div id="error-msg" class="error-txt"></div></div></div>
-<div id="app-screen"><div class="main-container"><nav>
+<div class="toggle-link" id="go-to-login">Уже есть аккаунт? Войти</div>
+</div>
+<div id="error-msg" class="error-txt"></div>
+</div>
+</div>
+<div id="app-screen">
+<div class="main-container">
+<nav>
 <a href="#" class="menu-link active" data-page="messages">Сообщения</a>
 <a href="#" class="menu-link" data-page="recs">Рекомендации</a>
-<a href="#" class="menu-link" data-page="channels">Сообщества</a></nav>
-<main class="content-area"><div id="page-messages" class="page active"><h2>Диалоги Pik</h2>
-<div id="chats-list" style="margin-top:15px">Загрузка...</div></div>
-<div id="page-recs" class="page"><h2>Рекомендации</h2><div id="recs-list" style="margin-top:15px">Загрузка...</div></div>
-<div id="page-channels" class="page"><h2>Каналы Pik</h2><div id="channels-list" style="margin-top:15px">Загрузка...</div></div>
-</main></div></div>
+<a href="#" class="menu-link" data-page="channels">Сообщества</a>
+</nav>
+<main class="content-area">
+<div id="page-messages" class="page active">
+<h2>Диалоги Pik</h2>
+<div id="chats-list" style="margin-top:15px">Загрузка...</div>
+</div>
+<div id="page-recs" class="page">
+<h2>Рекомендации</h2>
+<div id="recs-list" style="margin-top:15px">Загрузка...</div>
+</div>
+<div id="page-channels" class="page">
+<h2>Каналы Pik</h2>
+<div id="channels-list" style="margin-top:15px">Загрузка...</div>
+</div>
+</main>
+</div>
+</div>
 <script type="module">
 import { initializeApp } from "https://gstatic.com";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://gstatic.com";
 import { getFirestore, doc, getDoc, setDoc, collection, getDocs, query, orderBy, limit } from "https://gstatic.com";
+
 const f = {
 apiKey: "AIzaSyAj3vEkxJEAGLlwMSiNDf255vTVHHQ9boE",
 authDomain: "://firebaseapp.com",
 projectId: "massage-6bf45"
 };
+
 const g = {
 apiKey: "AIzaSyD4ZT5yKANIpIUO6a7IDb467hTqXwkJ2-I",
 authDomain: "://firebaseapp.com",
 projectId: "grup-6745c"
 };
+
 const appM = initializeApp(f);
 const appG = initializeApp(g, "g");
 const auth = getAuth(appM);
@@ -64,14 +115,19 @@ const dbM = getFirestore(appM);
 const dbG = getFirestore(appG);
 const DOMAIN = "@users.pik.app";
 const RE = /^[a-z][a-z0-9_]{2,31}\$/;
+
 document.getElementById('go-to-reg').onclick = () => {
 document.getElementById('login-fields').classList.add('hidden');
 document.getElementById('reg-fields').classList.remove('hidden');
+document.getElementById('error-msg').textContent = "";
 };
+
 document.getElementById('go-to-login').onclick = () => {
 document.getElementById('reg-fields').classList.add('hidden');
 document.getElementById('login-fields').classList.remove('hidden');
+document.getElementById('error-msg').textContent = "";
 };
+
 document.getElementById('login-btn').onclick = async () => {
 const u = document.getElementById('username').value.trim().toLowerCase();
 const p = document.getElementById('password').value;
@@ -83,12 +139,13 @@ await signInWithEmailAndPassword(auth, u + DOMAIN, p);
 e.textContent = "Неверен логин или пароль";
 }
 };
+
 document.getElementById('register-btn').onclick = async () => {
 const u = document.getElementById('reg-username').value.trim().toLowerCase();
 const n = document.getElementById('reg-name').value.trim();
 const p = document.getElementById('reg-password').value;
 const e = document.getElementById('error-msg');
-if(!RE.test(u)) { e.textContent = "Неверный юзернейм"; return; }
+if(!RE.test(u)) { e.textContent = "Неверный формат юзернейма"; return; }
 try {
 const check = await getDoc(doc(dbM, "usernames", u));
 if(check.exists()) { e.textContent = "Юзернейм занят"; return; }
@@ -99,7 +156,9 @@ await setDoc(doc(dbM, "usernames", u), { uid: cred.user.uid });
 e.textContent = "Ошибка регистрации";
 }
 };
+
 document.getElementById('logout-btn').onclick = () => signOut(auth);
+
 onAuthStateChanged(auth, async (user) => {
 if (user) {
 document.getElementById('auth-screen').style.display = 'none';
@@ -118,6 +177,7 @@ document.getElementById('app-screen').style.display = 'none';
 document.getElementById('logout-btn').classList.add('hidden');
 }
 });
+
 async function loadChats(uid) {
 const l = document.getElementById('chats-list');
 try {
@@ -129,6 +189,7 @@ l.innerHTML += `<div class="chat-item"><strong>${d.data().title || 'Юзер'}</
 });
 } catch(e) { l.innerHTML = "Ошибка чатов."; }
 }
+
 async function loadRecommendations() {
 const l = document.getElementById('recs-list');
 try {
@@ -141,6 +202,7 @@ l.innerHTML += `<div class="post-card"><strong>@${d.data().authorUsername || 'id
 });
 } catch(e) { l.innerHTML = "Ошибка ленты."; }
 }
+
 async function loadChannels() {
 const l = document.getElementById('channels-list');
 try {
@@ -152,8 +214,9 @@ if(d.data().type === "channel") {
 l.innerHTML += `<div class="chat-item"><strong>${d.data().name || 'Канал'}</strong><span>@${d.id}</span></div>`;
 }
 });
-} catch(e) { l.innerHTML = "Ошибка."; }
+} catch(e) { l.innerHTML = "Ошибка сообществ."; }
 }
+
 document.querySelectorAll('.menu-link').forEach(link => {
 link.onclick = (e) => {
 e.preventDefault();
@@ -163,4 +226,6 @@ link.classList.add('active');
 document.getElementById("page-" + link.getAttribute('data-page')).classList.add('active');
 };
 });
-</script></body></html>
+</script>
+</body>
+</html>
